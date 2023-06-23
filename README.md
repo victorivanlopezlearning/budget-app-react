@@ -1,1 +1,1 @@
-### Cost Controls | React - Vanilla CSS - LocalStorage - Vite
+### Budget App | React - Vanilla CSS - LocalStorage - Vite
