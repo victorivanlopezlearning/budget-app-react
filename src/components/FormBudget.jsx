@@ -1,19 +1,20 @@
 import { useState } from "react";
 import ErrorLabel from "./ErrorLabel";
 
-const FormBudget = ({ budget, setBudget }) => {
+const FormBudget = ({ budget, setBudget, setIsValidBudget }) => {
 
   const [ message, setMessage ] = useState('');
+  
 
   const handleBudget = ( e ) => {
     e.preventDefault();
 
-    if(!Number(budget) || Number(budget) <= 0) {
+    if(!budget || budget <= 0) {
       setMessage('No es un presupuesto valido');
       return;
     }
     setMessage('');
-    console.log('Todo bien')
+    setIsValidBudget(true);
   }
 
   return (
@@ -24,10 +25,11 @@ const FormBudget = ({ budget, setBudget }) => {
           <label>Definir Presupuesto</label>
           <input
             className="new-budget"
-            type="text"
+            type="number"
+            min={1}
             placeholder="Añade tu presupuesto"
             value={ budget }
-            onChange={ (e) => setBudget(e.target.value) }
+            onChange={ (e) => setBudget(Number(e.target.value)) }
           />
         </div>
 

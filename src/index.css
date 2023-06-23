@@ -178,22 +178,22 @@ header h1 {
 
     transform: translateY(5rem);
 }
-.dos-columnas {
+.two-columns {
     flex-direction: column;
 }
-.dos-columnas :first-child {
+.two-columns :first-child {
     margin-bottom: 4rem;
 }
 @media (min-width: 768px) {
-    .dos-columnas {
+    .two-columns {
         flex-direction: row;
         align-items: center;
         gap: 4rem;
     }
-    .dos-columnas > div {
+    .two-columns > div {
         width: 50%;
     }
-    .dos-columnas :first-child {
+    .two-columns :first-child {
         margin-bottom: 0;
     }
 }
@@ -207,25 +207,25 @@ header h1 {
     width: 25rem;
 }
 
-.contenido-presupuesto {
+.content-budget {
     width: 100%;
 }
-.contenido-presupuesto p {
+.content-budget p {
     font-weight: 400;
     color: var(--gris-oscuro);
     font-size: 2.4rem;
     text-align: center;
 }
 @media (min-width: 768px) {
-    .contenido-presupuesto p {
+    .content-budget p {
         text-align: left;
     }
 }
-.contenido-presupuesto p.negativo,
-.contenido-presupuesto p.negativo span {
+.content-budget p.negativo,
+.content-budget p.negativo span {
     color: red;
 }
-.contenido-presupuesto span {
+.content-budget span {
     font-weight: 900;
     color: var(--azul);
 }

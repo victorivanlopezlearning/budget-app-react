@@ -1,14 +1,22 @@
+import ControlBudget from "./ControlBudget";
 import FormBudget from "./FormBudget";
 
-const Header = ({ budget, setBudget }) => {
+const Header = ({ budget, setBudget, isValidBudget, setIsValidBudget }) => {
   return (
     <header>
       <h1>Control de Presupuesto</h1>
 
-      <FormBudget
+      { isValidBudget ? (
+        <ControlBudget 
         budget={ budget }
-        setBudget={ setBudget }
-      />
+        />
+      ) : (
+        <FormBudget
+          budget={ budget }
+          setBudget={ setBudget }
+          setIsValidBudget={ setIsValidBudget }
+        />
+      )}
     </header>
   )
 }
