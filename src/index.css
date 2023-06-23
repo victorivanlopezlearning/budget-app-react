@@ -336,16 +336,16 @@ main {
     font-weight: 400;
 }
 
-.nuevo-gasto {
+.new-expense {
     position: fixed;
     bottom: 5rem;
     right: 5rem;
 }
 
-.nuevo-gasto img {
+.new-expense img {
     width: 5rem;
 }
-.nuevo-gasto img:hover {
+.new-expense img:hover {
     cursor: pointer;
 }
 
