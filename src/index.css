@@ -28,10 +28,20 @@ html {
 }
 
 h1 {
-    font-size: 4rem;
+    font-size: 3.5rem;
+}
+@media (min-width: 768px) {
+    h1 {
+        font-size: 4rem;
+    }
 }
 h2 {
-    font-size: 3rem;
+    font-size: 2.5rem;
+}
+@media (min-width: 768px) {
+    h2 {
+        font-size: 3rem;
+    }
 }
 
 .shadow {
@@ -39,7 +49,7 @@ h2 {
     -webkit-box-shadow: 0px 9px 10px -10px rgba(0, 0, 0, 0.51);
     -moz-box-shadow: 0px 9px 10px -10px rgba(0, 0, 0, 0.51);
     background-color: var(--blanco);
-    padding: 4rem;
+    padding: 2.5rem;
     border-radius: 1.2rem;
 }
 
@@ -59,7 +69,12 @@ header h1 {
 .form {
     width: 95%;
     margin: 0 auto;
-    padding: 10rem 0;
+    padding: 5rem 0;
+}
+@media (min-width: 768px) {
+    .form {
+        padding: 10rem 0;
+    }
 }
 @media (min-width: 768px) {
     .form {
@@ -97,6 +112,7 @@ header h1 {
     border: none;
     flex: 1;
     font-size: 1.6rem;
+    width: 100%;
 }
 .form input[type="submit"] {
     background-color: #1048a4;
@@ -131,21 +147,21 @@ header h1 {
     background-color: var(--gris-claro);
 }
 
-.alerta {
+.alert {
     padding: 2rem 5rem;
     max-width: 60rem;
-    margin: 2rem auto 2rem auto;
+    margin: 2rem auto;
     font-weight: 900;
     text-transform: uppercase;
-    font-size: 1.8rem;
+    font-size: 1.6rem;
     text-align: center;
 }
-.alerta.error {
+.alert.error {
     background-color: var(--blanco);
     border-left: 5px solid #b91c1c;
     color: #b91c1c;
 }
-.alerta.success {
+.alert.success {
 }
 
 .container {
