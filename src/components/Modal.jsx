@@ -1,13 +1,36 @@
+import { useState } from 'react';
+import ErrorLabel from './ErrorLabel';
 import CloseModalSVG from '../assets/img/close-modal.svg';
 
-const Modal = ({ setModal, animateModal, setAnimateModal }) => {
+const Modal = ({ setModal, animateModal, setAnimateModal, saveExpense }) => {
 
-  const handleHiddenModal = () =>{
+  const [ message, setMessage ] = useState('');
+
+  const [ nameExpense, setNameExpense ] = useState('');
+  const [ qty, setQty ] = useState('');
+  const [ category, setCategory ] = useState('');
+
+  const handleHiddeModal = () => {
     setAnimateModal(false);
 
     setTimeout(() => {
       setModal(false);
     }, 300);
+  }
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+
+    if([ nameExpense, qty, category ].includes('')) {
+      setMessage('Todos los campos son obligatorios');
+      
+      setTimeout(() => {
+        setMessage('');
+      }, 2000);
+      return;
+    }
+    setMessage('');
+    saveExpense({ nameExpense, qty, category });
   }
 
   return (
@@ -16,21 +39,28 @@ const Modal = ({ setModal, animateModal, setAnimateModal }) => {
         <img 
           src={ CloseModalSVG } 
           alt="Icon Close Modal"
-          onClick={ handleHiddenModal }
+          onClick={ handleHiddeModal }
         />
       </div>
 
-      <form className={`form ${ animateModal ? 'animate' : 'close' }`}>
+      <form 
+        className={`form ${ animateModal ? 'animate' : 'close' }`}
+        onSubmit={ handleSubmit }
+      >
         <legend>Nuevo Gasto</legend>
 
+        { message && <ErrorLabel message={ message }  type='error' /> }
+
         <div className='field'>
-          <label htmlFor="name">Nombre Gasto</label>
+          <label htmlFor="nameExpense">Nombre Gasto</label>
 
           <input 
             type="text" 
-            id="name" 
-            name="name"
-            placeholder='Añade el nombre del gasto' 
+            id="nameExpense" 
+            name="nameExpense"
+            placeholder='Añade el nombre del gasto'
+            value={ nameExpense } 
+            onChange={ (e) => setNameExpense(e.target.value)}
           />
         </div>
 
@@ -41,14 +71,21 @@ const Modal = ({ setModal, animateModal, setAnimateModal }) => {
             type="number" 
             id="qty" 
             name="qty"
-            placeholder='Añade la cantidad del gasto: ej. 300' 
+            placeholder='Añade la cantidad del gasto: ej. 300'
+            value={ qty }
+            onChange={ (e) => setQty(Number(e.target.value))}
           />
         </div>
 
         <div className='field'>
           <label htmlFor="category">Categoría</label>
 
-          <select name="category" id="category">
+          <select 
+            name="category" 
+            id="category"
+            value={ category }
+            onChange={ (e) => setCategory(e.target.value)}
+          >
             <option value="">-- Seleccione --</option>
             <option value="saving">Ahorro</option>
             <option value="food">Comida</option>

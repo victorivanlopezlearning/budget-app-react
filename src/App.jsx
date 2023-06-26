@@ -19,6 +19,10 @@ function App() {
     }, 300);
   }
 
+  const saveExpense = ( expense ) => {
+    console.log(expense);
+  }
+
   return (
     <div>
       <Header 
@@ -41,7 +45,8 @@ function App() {
       { modal && <Modal 
                     setModal={ setModal } 
                     animateModal={ animateModal }
-                    setAnimateModal= { setAnimateModal } 
+                    setAnimateModal= { setAnimateModal }
+                    saveExpense={ saveExpense }
                   />}
 
     </div>
