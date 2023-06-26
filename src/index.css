@@ -22,7 +22,7 @@ html {
     box-sizing: inherit;
 }
 
-.fijar {
+.fix {
     overflow: hidden;
     height: 100vh;
 }
