@@ -1,11 +1,23 @@
 import { useState } from 'react';
 import Header from './components/Header';
 import IconNewExpense from './assets/img/new-expense.svg';
+import Modal from './components/Modal';
 
 function App() {
 
   const [ budget, setBudget ] = useState(0);
   const [ isValidBudget, setIsValidBudget ] = useState(false);
+
+  const [ modal, setModal ] = useState(false);
+  const [ animateModal, setAnimateModal ] = useState(false);
+
+  const handleNewExpense = () => {
+    setModal(true);
+
+    setTimeout(() => {
+      setAnimateModal(true);
+    }, 300);
+  }
 
   return (
     <div>
@@ -18,9 +30,20 @@ function App() {
 
       { isValidBudget && (
         <div className='new-expense'>
-          <img src={ IconNewExpense } alt="Icon new expense" />
+          <img 
+            src={ IconNewExpense } 
+            alt="Icon new expense"
+            onClick={ handleNewExpense } 
+          />
         </div>
       ) }
+
+      { modal && <Modal 
+                    setModal={ setModal } 
+                    animateModal={ animateModal }
+                    setAnimateModal= { setAnimateModal } 
+                  />}
+
     </div>
   )
 }
