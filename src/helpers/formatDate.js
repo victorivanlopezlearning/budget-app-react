@@ -1,4 +1,9 @@
 
+/**
+ * Date formatting
+ * @param {Number} date number of milliseconds
+ * @returns {String}
+ */
 export const formatDate = ( date ) => {
   const objDate = new Date(date);
 
