@@ -31,6 +31,7 @@ const Modal = ({ setModal, animateModal, setAnimateModal, saveExpense }) => {
     }
     setMessage('');
     saveExpense({ nameExpense, qty, category });
+    handleHiddeModal();
   }
 
   return (
