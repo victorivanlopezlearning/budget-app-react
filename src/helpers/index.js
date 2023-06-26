@@ -1,3 +1,4 @@
+export { formatDate } from './formatDate';
 
 export const generateUniqueId = () => {
   const random = Math.random().toString(36).substring(2);

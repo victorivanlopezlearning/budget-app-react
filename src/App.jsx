@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import Header from './components/Header';
+import ListExpenses from './components/ListExpenses';
 import Modal from './components/Modal';
 import { generateUniqueId } from './helpers';
 import IconNewExpense from './assets/img/new-expense.svg';
@@ -24,6 +25,7 @@ function App() {
 
   const saveExpense = ( expense ) => {
     expense.id = generateUniqueId();
+    expense.date = Date.now();
     setExpenses([...expenses, expense]);
 
   }
@@ -38,13 +40,20 @@ function App() {
       />
 
       { isValidBudget && (
-        <div className='new-expense'>
-          <img 
-            src={ IconNewExpense } 
-            alt="Icon new expense"
-            onClick={ handleNewExpense } 
-          />
-        </div>
+        <>
+          <main>
+            <ListExpenses 
+              expenses={ expenses }
+            />
+          </main>
+          <div className='new-expense'>
+            <img 
+              src={ IconNewExpense } 
+              alt="Icon new expense"
+              onClick={ handleNewExpense } 
+            />
+          </div>
+        </>
       ) }
 
       { modal && <Modal 
