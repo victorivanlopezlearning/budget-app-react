@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { formatToDollars } from "../helpers";
 
 const ControlBudget = ({ budget, expenses }) => {
 
@@ -10,17 +11,6 @@ const ControlBudget = ({ budget, expenses }) => {
     setSpent(totalSpent);
   }, [ expenses ])
 
-  /**
-   * 
-   * @param {Number} qty 
-   * @returns {String}
-   */
-  const formatToDollars = ( qty ) => {
-    return qty.toLocaleString('en-US', {
-      style: 'currency',
-      currency: 'USD'
-    });
-  };
 
   return (
     <div className="container-budget container shadow two-columns">
