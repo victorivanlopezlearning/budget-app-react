@@ -26,13 +26,13 @@ const dictionaryIcons = {
   various: IconVarious,
 }
 
-const Expense = ({ expense}) => {
+const Expense = ({ expense, setExpenseToUpdate }) => {
   
   const { category, nameExpense, qty, id, date } = expense;
 
   const leadingActions = () => (
     <LeadingActions>
-      <SwipeAction onClick={() => console.info('swipe action triggered')}>
+      <SwipeAction onClick={() => setExpenseToUpdate(expense)}>
         Editar
       </SwipeAction>
     </LeadingActions>

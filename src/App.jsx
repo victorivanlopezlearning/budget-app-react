@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import Header from './components/Header';
 import ListExpenses from './components/ListExpenses';
 import Modal from './components/Modal';
@@ -15,20 +15,47 @@ function App() {
 
   const [ expenses, setExpenses ] = useState([]);
 
+  const [ expenseToUpdate, setExpenseToUpdate ] = useState({});
+
+  useEffect(() => {
+    if(Object.keys(expenseToUpdate).length > 0) {
+      showModal();
+    }
+  }, [ expenseToUpdate ]);
+  
+
   const handleNewExpense = () => {
+    showModal();
+    setExpenseToUpdate({});
+  };
+
+  const showModal = () => {
     setModal(true);
 
     setTimeout(() => {
       setAnimateModal(true);
     }, 300);
-  }
+  };
 
   const saveExpense = ( expense ) => {
+    if(expense.id) {
+      updateExpense(expense);
+
+    } else {
+      createExpense(expense);
+    };
+  };
+
+  const createExpense = ( expense ) => {
     expense.id = generateUniqueId();
     expense.date = Date.now();
     setExpenses([...expenses, expense]);
+  };
 
-  }
+  const updateExpense = ( expense ) => {
+    const expensesUpdated = expenses.map( expenseState => expenseState.id === expense.id ? expense : expenseState );
+    setExpenses(expensesUpdated); 
+  };
 
   return (
     <div className={ modal ? 'fix' : undefined}>
@@ -45,6 +72,7 @@ function App() {
           <main>
             <ListExpenses 
               expenses={ expenses }
+              setExpenseToUpdate={ setExpenseToUpdate }
             />
           </main>
           <div className='new-expense'>
@@ -62,6 +90,8 @@ function App() {
                     animateModal={ animateModal }
                     setAnimateModal= { setAnimateModal }
                     saveExpense={ saveExpense }
+                    expenseToUpdate={ expenseToUpdate }
+                    setExpenseToUpdate={ setExpenseToUpdate }
                   />}
 
     </div>
