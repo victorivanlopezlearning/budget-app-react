@@ -8,9 +8,11 @@ const ControlBudget = ({ budget, expenses }) => {
 
   useEffect( () => {
     const totalSpent = expenses.reduce( ( total, expense ) => total + expense.qty, 0 );
-    setSpent(totalSpent);
-  }, [ expenses ])
+    const totalAvailable = budget - totalSpent;
 
+    setSpent(totalSpent);
+    setAvailable(totalAvailable);
+  }, [ expenses ])
 
   return (
     <div className="container-budget container shadow two-columns">
