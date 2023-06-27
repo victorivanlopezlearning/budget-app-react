@@ -31,12 +31,13 @@ function App() {
   }
 
   return (
-    <div className={ modal && 'fix'}>
+    <div className={ modal ? 'fix' : undefined}>
       <Header 
         budget={ budget }
         setBudget={ setBudget }
         isValidBudget={ isValidBudget }
         setIsValidBudget= { setIsValidBudget }
+        expenses={ expenses }
       />
 
       { isValidBudget && (

@@ -1,5 +1,14 @@
+import { useState, useEffect } from "react";
 
-const ControlBudget = ({ budget }) => {
+const ControlBudget = ({ budget, expenses }) => {
+
+  const [ available, setAvailable ] = useState(0);
+  const [ spent, setSpent ] = useState(0);
+
+  useEffect( () => {
+    const totalSpent = expenses.reduce( ( total, expense ) => total + expense.qty, 0 );
+    setSpent(totalSpent);
+  }, [ expenses ])
 
   /**
    * 
@@ -25,11 +34,11 @@ const ControlBudget = ({ budget }) => {
         </p>
 
         <p>
-          <span>Disponible: </span> { formatToDollars( 0 ) }
+          <span>Disponible: </span> { formatToDollars( available ) }
         </p>
 
         <p>
-          <span>Gastado: </span> { formatToDollars( 0 ) }
+          <span>Gastado: </span> { formatToDollars( spent ) }
         </p>
       </div>
     </div>

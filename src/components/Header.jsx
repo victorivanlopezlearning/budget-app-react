@@ -1,7 +1,7 @@
 import ControlBudget from "./ControlBudget";
 import FormBudget from "./FormBudget";
 
-const Header = ({ budget, setBudget, isValidBudget, setIsValidBudget }) => {
+const Header = ({ budget, setBudget, isValidBudget, setIsValidBudget, expenses }) => {
   return (
     <header>
       <h1>Control de Presupuesto</h1>
@@ -9,6 +9,7 @@ const Header = ({ budget, setBudget, isValidBudget, setIsValidBudget }) => {
       { isValidBudget ? (
         <ControlBudget 
         budget={ budget }
+        expenses={ expenses }
         />
       ) : (
         <FormBudget
