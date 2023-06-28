@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import Header from './components/Header';
+import Filters from './components/Filters';
 import ListExpenses from './components/ListExpenses';
 import Modal from './components/Modal';
 import { generateUniqueId } from './helpers';
@@ -17,6 +18,9 @@ function App() {
   const [ expenses, setExpenses ] = useState(() => JSON.parse(localStorage.getItem('expenses')) ?? []);
 
   const [ expenseToUpdate, setExpenseToUpdate ] = useState({});
+
+  const [ filter, setFilter ] = useState('');
+  const [ expensesFiltered, setExpensesFiltered ] = useState([]);
 
   useEffect(() => {
     if(Object.keys(expenseToUpdate).length > 0) {
@@ -37,6 +41,14 @@ function App() {
       setIsValidBudget(true);
     }
   }, [])
+
+  useEffect(() => {
+    if(filter) {
+      const expensesFiltered = expenses.filter( expense => expense.category === filter );
+      
+      setExpensesFiltered(expensesFiltered);
+    }
+  }, [ filter ])
   
 
   const handleNewExpense = () => {
@@ -95,10 +107,16 @@ function App() {
       { isValidBudget && (
         <>
           <main>
+            <Filters 
+              filter={ filter }
+              setFilter={ setFilter }
+            />
             <ListExpenses 
               expenses={ expenses }
               setExpenseToUpdate={ setExpenseToUpdate }
               deleteExpense={ deleteExpense }
+              filter={ filter }
+              expensesFiltered={ expensesFiltered }
             />
           </main>
           <div className='new-expense'>
