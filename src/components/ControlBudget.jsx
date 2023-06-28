@@ -4,7 +4,13 @@ import 'react-circular-progressbar/dist/styles.css';
 
 import { formatToDollars } from "../helpers";
 
-const ControlBudget = ({ budget, expenses }) => {
+const ControlBudget = ({
+  budget,
+  setBudget,
+  expenses, 
+  setExpenses,
+  setIsValidBudget
+}) => {
 
   const [ percent, setPercent ] = useState(0);
   const [ available, setAvailable ] = useState(0);
@@ -24,6 +30,16 @@ const ControlBudget = ({ budget, expenses }) => {
     }
   }, [ expenses ])
 
+  const handleResetApp = () => {
+    const isConfirm = confirm('¿Desea reiniciar todo?');
+
+    if(isConfirm) {
+      setBudget(0);
+      setExpenses([]);
+      setIsValidBudget(false);
+    }
+  }
+
   return (
     <div className="container-budget container shadow two-columns">
       <div>
@@ -37,8 +53,17 @@ const ControlBudget = ({ budget, expenses }) => {
           text={`${percent}% Gastado`}
         />
       </div>
-
+      
       <div className="content-budget">
+
+        <button
+          className="reset-app"
+          type="button"
+          onClick={ handleResetApp }
+        >
+          Resetear App
+        </button>
+
         <p>
           <span>Presupuesto: </span> { formatToDollars( budget ) }
         </p>
