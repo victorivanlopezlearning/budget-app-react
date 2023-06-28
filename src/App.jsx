@@ -54,7 +54,8 @@ function App() {
 
   const updateExpense = ( expense ) => {
     const expensesUpdated = expenses.map( expenseState => expenseState.id === expense.id ? expense : expenseState );
-    setExpenses(expensesUpdated); 
+    setExpenses(expensesUpdated);
+    setExpenseToUpdate({});
   };
 
   /**
