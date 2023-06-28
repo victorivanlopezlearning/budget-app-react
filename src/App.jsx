@@ -27,15 +27,15 @@ function App() {
   const handleNewExpense = () => {
     showModal();
     setExpenseToUpdate({});
-  };
+  }
 
   const showModal = () => {
     setModal(true);
 
     setTimeout(() => {
       setAnimateModal(true);
-    }, 300);
-  };
+    }, 300)
+  }
 
   const saveExpense = ( expense ) => {
     if(expense.id) {
@@ -43,19 +43,28 @@ function App() {
 
     } else {
       createExpense(expense);
-    };
-  };
+    }
+  }
 
   const createExpense = ( expense ) => {
     expense.id = generateUniqueId();
     expense.date = Date.now();
     setExpenses([...expenses, expense]);
-  };
+  }
 
   const updateExpense = ( expense ) => {
     const expensesUpdated = expenses.map( expenseState => expenseState.id === expense.id ? expense : expenseState );
     setExpenses(expensesUpdated); 
   };
+
+  /**
+   * Detele Expense
+   * @param {String} id 
+   */
+  const deleteExpense = ( id ) => {
+    const expensesUpdated = expenses.filter( expense => expense.id !== id);
+    setExpenses(expensesUpdated); 
+  }
 
   return (
     <div className={ modal ? 'fix' : undefined}>
@@ -73,6 +82,7 @@ function App() {
             <ListExpenses 
               expenses={ expenses }
               setExpenseToUpdate={ setExpenseToUpdate }
+              deleteExpense={ deleteExpense }
             />
           </main>
           <div className='new-expense'>
