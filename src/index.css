@@ -219,9 +219,9 @@ header h1 {
         text-align: left;
     }
 }
-.content-budget p.negativo,
-.content-budget p.negativo span {
-    color: red;
+.content-budget p.negative,
+.content-budget p.negative span {
+    color: #df0606;
 }
 .content-budget span {
     font-weight: 900;
