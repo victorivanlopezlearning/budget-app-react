@@ -17,9 +17,11 @@ const ControlBudget = ({ budget, expenses }) => {
   
     setSpent(totalSpent);
     setAvailable(totalAvailable);
-    setTimeout(() => {
-      setPercent(porcentUpdated);
-    }, 1000);
+    if(porcentUpdated > 0) {
+      setTimeout(() => {
+        setPercent(porcentUpdated);
+      }, 1000);
+    }
   }, [ expenses ])
 
   return (
