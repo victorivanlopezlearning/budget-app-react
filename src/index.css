@@ -148,13 +148,18 @@ header h1 {
 }
 
 .alert {
-    padding: 2rem 5rem;
+    padding: 1rem;
     max-width: 60rem;
     margin: 2rem auto;
     font-weight: 900;
     text-transform: uppercase;
     font-size: 1.6rem;
     text-align: center;
+}
+@media (min-width: 768px) {
+    .alert {
+        padding: 2rem;
+    }
 }
 .alert.error {
     background-color: var(--blanco);
@@ -255,9 +260,14 @@ main {
     gap: 2rem;
 }
 .filters label {
-    font-size: 3rem;
+    font-size: 2rem;
     font-weight: 900;
     color: var(--gris-oscuro);
+}
+@media (min-width: 768px) {
+    .filters label {
+        font-size: 3rem;
+    }
 }
 .filters select {
     flex: 1;
@@ -307,8 +317,13 @@ main {
 }
 
 .content-expense img {
-    width: 10rem;
+    width: 7rem;
     pointer-events: none;
+}
+@media (min-width: 768px) {
+    .content-expense img {
+        width: 10rem;
+    }
 }
 
 .description-expense p {
@@ -316,22 +331,42 @@ main {
 }
 .description-expense .category {
     color: var(--gris);
-    font-size: 1.6rem;
+    font-size: 1.4rem;
     font-weight: 900;
     text-transform: uppercase;
 }
+@media (min-width: 768px) {
+    .description-expense .category {
+        font-size: 1.6rem;
+    }
+}
 .description-expense p {
-    margin-bottom: 1rem;
+    margin-bottom: 0.8rem;
+}
+@media (min-width: 768px) {
+    .description-expense p {
+        margin-bottom: 1rem;
+    }
 }
 .description-expense .name-expense {
     color: var(--gris-oscuro);
-    font-size: 2.4rem;
+    font-size: 2.2rem;
     font-weight: 700;
 }
+@media (min-width: 768px) {
+    .description-expense .name-expense {
+        font-size: 2.4rem;
+    }
+}
 .description-expense .date-expense {
-    font-size: 1.8rem;
+    font-size: 1.6rem;
     font-weight: 900;
     color: var(--gris-oscuro);
+}
+@media (min-width: 768px) {
+    .description-expense .date-expense {
+        font-size: 1.8rem;
+    }
 }
 .description-expense .date-expense span {
     font-weight: 400;
