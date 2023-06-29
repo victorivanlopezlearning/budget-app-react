@@ -31,7 +31,7 @@ const ControlBudget = ({
   }, [ expenses ])
 
   const handleResetApp = () => {
-    const isConfirm = confirm('¿Desea reiniciar todo?');
+    const isConfirm = confirm('¿Desea reiniciar la aplicación?');
 
     if(isConfirm) {
       setBudget(0);
